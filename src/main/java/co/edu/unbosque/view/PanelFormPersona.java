@@ -18,6 +18,7 @@ public class PanelFormPersona extends JPanel{
     private JLabel lblAge;
     private JTextField txtAge;
 
+    private JLabel fondo;
 
 
     private JButton btnSave;
@@ -73,6 +74,11 @@ public class PanelFormPersona extends JPanel{
         btnSave.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btnSave.setActionCommand("GUARDAR_PERSONA");
         add(btnSave);
+
+        fondo = new JLabel();
+        fondo.setBounds(0, 0, 700, 600);
+        fondo.setIcon(new ImageIcon(getClass().getResource("/fondo_form.png")));
+        add(fondo);
 
     }
 

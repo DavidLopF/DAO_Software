@@ -8,6 +8,7 @@ public class PanelOpciones extends JPanel {
     private JComboBox opciones;
     private JButton aceptar;
 
+    private JLabel fondo;
     public PanelOpciones(){
         setLayout(null);
         setVisible(true);
@@ -30,6 +31,12 @@ public class PanelOpciones extends JPanel {
         aceptar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         aceptar.setActionCommand("ACEPTAR_OPCION");
         add(aceptar);
+
+
+        fondo = new JLabel();
+        fondo.setBounds(0, 0, 700, 600);
+        fondo.setIcon(new ImageIcon(getClass().getResource("/fondo.png")));
+        add(fondo);
     }
     public JComboBox getOpciones() {
         return opciones;
