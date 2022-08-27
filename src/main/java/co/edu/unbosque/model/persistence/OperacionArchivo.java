@@ -1,7 +1,5 @@
 package co.edu.unbosque.model.persistence;
 
-import co.edu.unbosque.model.Persona;
-
 import java.io.*;
 
 public class OperacionArchivo {
@@ -12,7 +10,7 @@ public class OperacionArchivo {
 
 
     public OperacionArchivo() throws IOException {
-        archivo = new File("archivo.dat");
+        archivo = new File("src/main/resources/archivo.dat");
         flujoSalida = new FileOutputStream(archivo);
         flujoObjeto = new ObjectOutputStream(flujoSalida);
     }

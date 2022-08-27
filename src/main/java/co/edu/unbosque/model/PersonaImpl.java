@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
 import co.edu.unbosque.model.persistence.OperacionArchivo;
+import co.edu.unbosque.model.persistence.Persona;
+import co.edu.unbosque.model.persistence.Sqlite;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,10 +12,13 @@ public class PersonaImpl implements PersonaDAO{
     private ArrayList<Persona> personas;
     private OperacionArchivo operacionArchivo;
 
+    private Sqlite sqlite;
+
 
     public PersonaImpl() throws IOException {
         personas = new ArrayList<>();
         operacionArchivo = new OperacionArchivo();
+        sqlite = new Sqlite();
     }
 
     public boolean saveInArray(Persona persona) {
@@ -37,7 +42,13 @@ public class PersonaImpl implements PersonaDAO{
 
     @Override
     public boolean saveInSQLite(Persona persona) {
-        return false;
+        try {
+            sqlite.savePerson(persona);
+            return true;
+        } catch (Exception e) {
+            System.out.println("error in cath " + e);
+            return false;
+        }
     }
 
     @Override

@@ -1,6 +1,6 @@
 package co.edu.unbosque.view;
 
-import co.edu.unbosque.model.Persona;
+import co.edu.unbosque.model.persistence.Persona;
 
 import javax.swing.*;
 

@@ -1,7 +1,8 @@
 package co.edu.unbosque.controller;
 
-import co.edu.unbosque.model.Persona;
+import co.edu.unbosque.model.persistence.Persona;
 import co.edu.unbosque.model.PersonaImpl;
+import co.edu.unbosque.model.persistence.Sqlite;
 import co.edu.unbosque.view.PanelPrincipal;
 
 import java.awt.event.ActionEvent;
@@ -15,6 +16,7 @@ public class Controller implements ActionListener {
     private PanelPrincipal panelPrincipal;
     private PersonaImpl personaDAO;
 
+    private static final String acept_option = "ACEPTAR_OPCION";
     public Controller() throws IOException {
         panelPrincipal = new PanelPrincipal();
         personaDAO = new PersonaImpl();
@@ -58,7 +60,13 @@ public class Controller implements ActionListener {
                         panelPrincipal.changePanel(panelPrincipal.getPanelOpciones());
                         break;
                     case "3":
-                        System.out.println("guardar en sqlite");
+                        flag = personaDAO.saveInSQLite(persona);
+                        if (flag) {
+                            panelPrincipal.showMesasge("Persona guardada correctamente");
+                        } else {
+                            panelPrincipal.showMesasge("Error al guardar la persona");
+                        }
+                        panelPrincipal.changePanel(panelPrincipal.getPanelOpciones());
                         break;
 
                 }
