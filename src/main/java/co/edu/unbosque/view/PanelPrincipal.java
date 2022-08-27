@@ -34,6 +34,9 @@ public class PanelPrincipal extends JFrame {
         getContentPane().repaint();
         
     }
+    public void showMesasge(String message){
+        JOptionPane.showMessageDialog(null, message);
+    }
 
     public PanelOpciones getPanelOpciones() {
         return panelOpciones;

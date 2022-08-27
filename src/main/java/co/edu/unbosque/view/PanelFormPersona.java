@@ -1,8 +1,8 @@
 package co.edu.unbosque.view;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import co.edu.unbosque.model.Persona;
+
+import javax.swing.*;
 
 import java.awt.*;
 
@@ -17,6 +17,10 @@ public class PanelFormPersona extends JPanel{
     private JTextField txtPhoneNumber;
     private JLabel lblAge;
     private JTextField txtAge;
+
+
+
+    private JButton btnSave;
     
 
     public PanelFormPersona(){
@@ -64,6 +68,105 @@ public class PanelFormPersona extends JPanel{
         txtAge.setBounds(160, 340, 400, 30);
         add(txtAge);
 
+        btnSave = new JButton("Guardar");
+        btnSave.setBounds(160, 400, 400, 30);
+        btnSave.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnSave.setActionCommand("GUARDAR_PERSONA");
+        add(btnSave);
+
     }
-    
+
+     public Persona getPersona(){
+        try{
+            Persona persona = new Persona(txtName.getText().trim(), txtSex.getText().trim(), txtPhoneNumber.getText().trim(), Integer.parseInt(txtAge.getText().trim()));
+            txtName.setText("");
+            txtSex.setText("");
+            txtPhoneNumber.setText("");
+            txtAge.setText("");
+            return persona;
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al obtener los datos de la persona");
+            return null;
+        }
+    }
+
+    public JLabel getTitle() {
+        return title;
+    }
+
+    public void setTitle(JLabel title) {
+        this.title = title;
+    }
+
+    public JLabel getLblName() {
+        return lblName;
+    }
+
+    public void setLblName(JLabel lblName) {
+        this.lblName = lblName;
+    }
+
+    public JTextField getTxtName() {
+        return txtName;
+    }
+
+    public void setTxtName(JTextField txtName) {
+        this.txtName = txtName;
+    }
+
+    public JLabel getLblSex() {
+        return lblSex;
+    }
+
+    public void setLblSex(JLabel lblSex) {
+        this.lblSex = lblSex;
+    }
+
+    public JTextField getTxtSex() {
+        return txtSex;
+    }
+
+    public void setTxtSex(JTextField txtSex) {
+        this.txtSex = txtSex;
+    }
+
+    public JLabel getLblPhoneNumber() {
+        return lblPhoneNumber;
+    }
+
+    public void setLblPhoneNumber(JLabel lblPhoneNumber) {
+        this.lblPhoneNumber = lblPhoneNumber;
+    }
+
+    public JTextField getTxtPhoneNumber() {
+        return txtPhoneNumber;
+    }
+
+    public void setTxtPhoneNumber(JTextField txtPhoneNumber) {
+        this.txtPhoneNumber = txtPhoneNumber;
+    }
+
+    public JLabel getLblAge() {
+        return lblAge;
+    }
+
+    public void setLblAge(JLabel lblAge) {
+        this.lblAge = lblAge;
+    }
+
+    public JTextField getTxtAge() {
+        return txtAge;
+    }
+
+    public void setTxtAge(JTextField txtAge) {
+        this.txtAge = txtAge;
+    }
+
+    public JButton getBtnSave() {
+        return btnSave;
+    }
+
+    public void setBtnSave(JButton btnSave) {
+        this.btnSave = btnSave;
+    }
 }

@@ -1,15 +1,15 @@
-package co.edu.unbosque.model.percistence.dto;
+package co.edu.unbosque.model;
 
 import java.io.Serializable;
 
-public class PersonaDTO implements Serializable {
+public class Persona implements Serializable {
 
     private String name;
     private String sex;
     private String phoneNumber;
     private int age;
 
-    public PersonaDTO(String name, String sex, String phoneNumber, int age) {
+    public Persona(String name, String sex, String phoneNumber, int age) {
         this.name = name;
         this.sex = sex;
         this.phoneNumber = phoneNumber;
