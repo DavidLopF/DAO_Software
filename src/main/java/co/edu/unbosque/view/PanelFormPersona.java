@@ -35,6 +35,7 @@ public class PanelFormPersona extends JPanel{
 
         title  = new JLabel("Formulario de persona");
         title.setBounds(160, 20, 400, 30);
+        title.setFont(new Font("Arial", Font.BOLD, 20));
         add(title);
 
         lblName = new JLabel("Nombre");
