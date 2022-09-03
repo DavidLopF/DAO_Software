@@ -31,12 +31,28 @@ public class PersonaImpl implements PersonaDAO{
         }
     }
 
+    @Override
+    public ArrayList<Persona> getPersonasArray() {
+        return personas;
+    }
+
     public boolean saveInBinaryFile(Persona persona){
         try {
             return operacionArchivo.savePerson(persona);
         } catch (Exception e) {
             System.out.println("error in cath " + e);
             return false;
+        }
+    }
+
+    @Override
+    public ArrayList<Persona> getPersonasBinaryFile() {
+        try {
+            ArrayList<Persona> personas = operacionArchivo.leerPersonas();
+            return personas;
+        } catch (Exception e) {
+            System.out.println("error in cath " + e);
+            return null;
         }
     }
 
@@ -48,6 +64,17 @@ public class PersonaImpl implements PersonaDAO{
         } catch (Exception e) {
             System.out.println("error in cath " + e);
             return false;
+        }
+    }
+
+    @Override
+    public ArrayList<Persona> getPersonasSQLite() {
+        try {
+            ArrayList<Persona> personas = sqlite.getPersonas();
+            return personas;
+        } catch (Exception e) {
+            System.out.println("error in cath " + e);
+            return null;
         }
     }
 

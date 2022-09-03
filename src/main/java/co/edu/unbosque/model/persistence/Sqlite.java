@@ -1,9 +1,8 @@
 package co.edu.unbosque.model.persistence;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class Sqlite {
 
@@ -32,6 +31,22 @@ public class Sqlite {
             System.err.println("error in cath " + e);
             System.out.println("Error de conexion " + e);
             return false;
+        }
+    }
+
+    public ArrayList<Persona> getPersonas() {
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM persona");
+            ArrayList<Persona> personas = new ArrayList<>();
+            while (resultSet.next()){
+                personas.add(new Persona(resultSet.getString("name"),resultSet.getString("sex"), resultSet.getString("phoneNumber"), resultSet.getInt("age") ));
+            }
+            return personas;
+        }catch (Exception e){
+            System.err.println("error in cath " + e);
+            System.out.println("Error de conexion " + e);
+            return null;
         }
     }
 

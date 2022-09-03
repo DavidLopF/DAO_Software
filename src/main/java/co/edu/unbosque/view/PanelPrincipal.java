@@ -8,6 +8,8 @@ public class PanelPrincipal extends JFrame {
     private PanelOpciones panelOpciones;
     private PanelFormPersona panelFormPersona;
 
+    private  PanelData panelData;
+
     public PanelPrincipal(){
         setTitle("Taller DAO");
         setSize(700, 600);
@@ -22,9 +24,8 @@ public class PanelPrincipal extends JFrame {
     public void inicializarComponentes(){
         panelOpciones = new PanelOpciones();
         getContentPane().add(panelOpciones, BorderLayout.CENTER);
-
         panelFormPersona = new PanelFormPersona();
-
+        panelData = new PanelData();
     }
 
     public void changePanel(JPanel panel){
@@ -52,5 +53,13 @@ public class PanelPrincipal extends JFrame {
 
     public void setPanelFormPersona(PanelFormPersona panelFormPersona) {
         this.panelFormPersona = panelFormPersona;
+    }
+
+    public PanelData getPanelData() {
+        return panelData;
+    }
+
+    public void setPanelData(PanelData panelData) {
+        this.panelData = panelData;
     }
 }

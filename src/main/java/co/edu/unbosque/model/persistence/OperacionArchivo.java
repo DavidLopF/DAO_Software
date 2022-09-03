@@ -35,16 +35,18 @@ public class OperacionArchivo {
         }
     }
 
-    public void leerPersonas() throws IOException, ClassNotFoundException {
+    public ArrayList<Persona> leerPersonas() throws IOException, ClassNotFoundException {
         try{
             flujoObjetoEntrada = new ObjectInputStream(new FileInputStream(archivo));
             personas = (ArrayList<Persona>) flujoObjetoEntrada.readObject();
-            System.out.println(personas.toString());
             flujoObjetoEntrada.close();
+            return personas;
         }catch (IOException e){
             System.out.println("error in cath " + e);
+            return null;
         }catch (ClassNotFoundException e){
             System.out.println("error in cath " + e);
+            return null;
         }
     }
 
