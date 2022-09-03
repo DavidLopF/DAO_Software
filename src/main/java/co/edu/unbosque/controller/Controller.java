@@ -18,9 +18,6 @@ public class Controller implements ActionListener {
     private PanelPrincipal panelPrincipal;
     private PersonaImpl personaDAO;
 
-    private Cassandra cassandra;
-
-
     private static final String acept_option = "ACEPTAR_OPCION";
     private static final String save_person = "GUARDAR_PERSONA";
     private static final String show_data = "VER_DATA";
@@ -30,12 +27,11 @@ public class Controller implements ActionListener {
 
     private static final String volver = "VOLVER";
 
-    private ArrayList <Persona> personas;
+    private ArrayList<Persona> personas;
 
     public Controller() throws IOException {
         panelPrincipal = new PanelPrincipal();
         personaDAO = new PersonaImpl();
-        cassandra = new Cassandra();
         giveListeners();
 
     }
@@ -49,8 +45,6 @@ public class Controller implements ActionListener {
         panelPrincipal.getPanelData().getVerCasandra().addActionListener(this);
         panelPrincipal.getPanelData().getVerBinario().addActionListener(this);
         panelPrincipal.getPanelData().getVolver().addActionListener(this);
-
-
     }
 
     @Override
@@ -95,6 +89,16 @@ public class Controller implements ActionListener {
                         }
                         panelPrincipal.changePanel(panelPrincipal.getPanelOpciones());
                         break;
+                    case "4":
+                        //guardar en cassandra
+                        flag = personaDAO.saveInCassandra(persona);
+                        if (flag) {
+                            panelPrincipal.showMesasge("Persona guardada correctamente");
+                        } else {
+                            panelPrincipal.showMesasge("Error al guardar la persona");
+                        }
+                        panelPrincipal.changePanel(panelPrincipal.getPanelOpciones());
+                        break;
                 }
                 break;
 
@@ -103,7 +107,7 @@ public class Controller implements ActionListener {
                 break;
 
             case show_array:
-                 personas = personaDAO.getPersonas();
+                personas = personaDAO.getPersonas();
                 if (personas.size() > 0) {
                     panelPrincipal.getPanelData().llenarTabla(personas);
                 } else {
@@ -113,7 +117,7 @@ public class Controller implements ActionListener {
                 break;
 
             case show_binary:
-                 personas = personaDAO.getPersonasBinaryFile();
+                personas = personaDAO.getPersonasBinaryFile();
                 if (personas.size() > 0) {
                     panelPrincipal.getPanelData().llenarTabla(personas);
                 } else {
@@ -122,7 +126,7 @@ public class Controller implements ActionListener {
                 }
                 break;
             case show_sqlite:
-                 personas = personaDAO.getPersonasSQLite();
+                personas = personaDAO.getPersonasSQLite();
                 if (personas.size() > 0) {
                     panelPrincipal.getPanelData().llenarTabla(personas);
                 } else {

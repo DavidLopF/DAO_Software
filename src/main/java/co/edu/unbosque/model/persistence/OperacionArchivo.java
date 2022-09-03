@@ -1,8 +1,6 @@
 package co.edu.unbosque.model.persistence;
 
 
-import org.w3c.dom.CDATASection;
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -21,9 +19,9 @@ public class OperacionArchivo {
         archivo = new File("src/main/resources/personas.dat");
     }
 
-    public boolean savePerson(Persona persona) throws IOException, ClassNotFoundException {
+    public boolean save(Persona persona) throws IOException, ClassNotFoundException {
         try {
-            leerPersonas();
+            leer();
             flujoObjeto = new ObjectOutputStream(new FileOutputStream(archivo));
             personas.add(persona);
             flujoObjeto.writeObject(personas);
@@ -35,7 +33,7 @@ public class OperacionArchivo {
         }
     }
 
-    public ArrayList<Persona> leerPersonas() throws IOException, ClassNotFoundException {
+    public ArrayList<Persona> leer() throws IOException, ClassNotFoundException {
         try{
             flujoObjetoEntrada = new ObjectInputStream(new FileInputStream(archivo));
             personas = (ArrayList<Persona>) flujoObjetoEntrada.readObject();

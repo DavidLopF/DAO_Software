@@ -21,7 +21,7 @@ public class Sqlite {
         }
     }
 
-    public boolean savePerson(Persona persona){
+    public boolean save(Persona persona){
         try {
 
             connection.createStatement().execute(
@@ -34,7 +34,7 @@ public class Sqlite {
         }
     }
 
-    public ArrayList<Persona> getPersonas() {
+    public ArrayList<Persona> getInfo() {
         try{
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM persona");
@@ -49,5 +49,7 @@ public class Sqlite {
             return null;
         }
     }
+
+
 
 }
