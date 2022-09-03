@@ -26,3 +26,4 @@ hs_err_pid*
 target
 .idea
 archivo.dat
+src/main/resources/personas.dat

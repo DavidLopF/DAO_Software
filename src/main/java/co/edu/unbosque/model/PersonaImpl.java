@@ -91,6 +91,12 @@ public class PersonaImpl implements PersonaDAO{
         }
     }
 
+    @Override
+    public ArrayList<Persona> getPersonasCassandra() {
+        ArrayList<Persona> personas = cassandra.getInfo();
+        return personas;
+    }
+
 
     public ArrayList<Persona> getPersonas() {
         return personas;

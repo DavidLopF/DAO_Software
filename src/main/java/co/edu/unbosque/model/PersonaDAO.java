@@ -15,4 +15,5 @@ public interface PersonaDAO {
     public ArrayList<Persona> getPersonasSQLite();
 
     public boolean saveInCassandra(Persona persona);
+    public ArrayList<Persona> getPersonasCassandra();
 }

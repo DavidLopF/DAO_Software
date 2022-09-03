@@ -24,6 +24,7 @@ public class Controller implements ActionListener {
     private static final String show_array = "VER_ARRAY";
     private static final String show_binary = "VER_BINARIO";
     private static final String show_sqlite = "VER_SQLITE";
+    private static final String show_cassandra = "VER_CASSANDRA";
 
     private static final String volver = "VOLVER";
 
@@ -127,6 +128,15 @@ public class Controller implements ActionListener {
                 break;
             case show_sqlite:
                 personas = personaDAO.getPersonasSQLite();
+                if (personas.size() > 0) {
+                    panelPrincipal.getPanelData().llenarTabla(personas);
+                } else {
+                    panelPrincipal.showMesasge("No hay personas guardadas");
+                    panelPrincipal.changePanel(panelPrincipal.getPanelOpciones());
+                }
+                break;
+            case show_cassandra:
+                personas = personaDAO.getPersonasCassandra();
                 if (personas.size() > 0) {
                     panelPrincipal.getPanelData().llenarTabla(personas);
                 } else {

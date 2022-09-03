@@ -1,9 +1,19 @@
 package co.edu.unbosque.model.persistence;
 
 import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Session;
+import com.datastax.driver.core.Statement;
+import com.datastax.driver.core.querybuilder.Insert;
+import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.oss.driver.api.core.cql.SimpleStatement;
 import com.datastax.oss.driver.api.querybuilder.insert.InsertInto;
-import com.datastax.oss.driver.api.querybuilder.term.Term;
+import com.datastax.oss.driver.api.querybuilder.select.SelectFrom;
+
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.UUID;
 
 import static com.datastax.oss.driver.api.querybuilder.QueryBuilder.*;
 
@@ -35,19 +45,39 @@ public class Cassandra {
     }
 
     public boolean save(Persona persona) {
-        //guardar objeto persona en cassandra
         try {
-            InsertInto insert = (InsertInto) insertInto("persona")
-                    .value("id", bindMarker())
+            InsertInto insertInto = insertInto("DAO_SOFTWARE", "persona");
+            String query = insertInto.value("id", literal(UUID.randomUUID()))
                     .value("name", literal(persona.getName()))
                     .value("sex", literal(persona.getSex()))
-                    .value("age", literal(persona.getSex()))
-                    .value("phone_number", literal(persona.getPhoneNumber()));
+                    .value("age", literal(persona.getAge()))
+                    .value("phone_number", literal(persona.getPhoneNumber())).toString();
+            session.execute(query);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("error in cath " + e);
             return false;
+        }
+    }
+
+    public ArrayList<Persona> getInfo() {
+        try {
+            ArrayList<Persona> personas = new ArrayList<>();
+            ResultSet resultSet = session.execute("SELECT * FROM DAO_SOFTWARE.persona");
+            resultSet.forEach(row -> {
+                personas.add(
+                        new Persona(row.getString("name"),
+                        row.getString("sex"),
+                        row.getString("phone_number"),
+                        row.getInt("age")));
+            });
+            System.out.println(personas.toString());
+            return personas;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("error in cath " + e);
+            return null;
         }
     }
 }
