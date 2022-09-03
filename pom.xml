@@ -19,6 +19,26 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.39.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache-extras.cassandra-jdbc</groupId>
+            <artifactId>cassandra-jdbc</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.datastax.cassandra</groupId>
+            <artifactId>cassandra-driver-core</artifactId>
+            <version>3.11.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.1</version>
+        </dependency>
     </dependencies>
 
 </project>

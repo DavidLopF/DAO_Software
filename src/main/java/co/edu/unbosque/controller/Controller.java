@@ -1,5 +1,6 @@
 package co.edu.unbosque.controller;
 
+import co.edu.unbosque.model.persistence.Cassandra;
 import co.edu.unbosque.model.persistence.Persona;
 import co.edu.unbosque.model.PersonaImpl;
 import co.edu.unbosque.model.persistence.Sqlite;
@@ -17,6 +18,8 @@ public class Controller implements ActionListener {
     private PanelPrincipal panelPrincipal;
     private PersonaImpl personaDAO;
 
+    private Cassandra cassandra;
+
 
     private static final String acept_option = "ACEPTAR_OPCION";
     private static final String save_person = "GUARDAR_PERSONA";
@@ -32,6 +35,7 @@ public class Controller implements ActionListener {
     public Controller() throws IOException {
         panelPrincipal = new PanelPrincipal();
         personaDAO = new PersonaImpl();
+        cassandra = new Cassandra();
         giveListeners();
 
     }

@@ -3,7 +3,6 @@ package co.edu.unbosque.model;
 import co.edu.unbosque.model.persistence.OperacionArchivo;
 import co.edu.unbosque.model.persistence.Persona;
 import co.edu.unbosque.model.persistence.Sqlite;
-
 import java.io.*;
 import java.util.ArrayList;
 

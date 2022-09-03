@@ -12,7 +12,7 @@ public class Sqlite {
         try{
             connection = DriverManager.getConnection("jdbc:sqlite:src/main/resources/databases/ingSoftwareDAO.sqlite");
             if(connection != null){
-                System.out.println("Conexión exitosa");
+                System.out.println("Conexión exitosa con sqlite");
                 connection.createStatement().execute("CREATE TABLE IF NOT EXISTS persona (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(50), sex VARCHAR(50), phoneNumber VARCHAR(20) ,age INTEGER)");
             }
         } catch (Exception e) {
