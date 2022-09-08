@@ -2,6 +2,7 @@ package co.edu.unbosque.view;
 
 import co.edu.unbosque.model.persistence.Persona;
 
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;

@@ -97,6 +97,73 @@ public class PersonaImpl implements PersonaDAO{
         return personas;
     }
 
+    @Override
+    public boolean deleteArray(String name) {
+        //buscar el usuario en el array
+        for (int i = 0; i < personas.size(); i++) {
+            if (personas.get(i).getName().equals(name)) {
+                personas.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteBinaryFile(String name) throws IOException, ClassNotFoundException {
+        ArrayList<Persona> personas = operacionArchivo.leer();
+        for (int i = 0; i < personas.size(); i++) {
+            if (personas.get(i).getName().equals(name)) {
+                personas.remove(i);
+            }
+        }
+        operacionArchivo.saveArrayList(personas);
+        return true;
+    }
+
+    @Override
+    public boolean deleteInSQLite(String name) {
+        return sqlite.delete(name);
+    }
+
+    @Override
+    public boolean deleteInCassandra(String name) {
+        return cassandra.delete(name);
+    }
+
+    @Override
+    public boolean updateArray(Persona persona, String name) {
+        for (int i = 0; i < personas.size(); i++) {
+            if (personas.get(i).getName().equals(name)) {
+                personas.set(i, persona);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateBinaryFile(Persona personaUpdate, String name) {
+        try {
+            ArrayList<Persona> personas = operacionArchivo.leer();
+            for (int i = 0; i < personas.size(); i++) {
+                if (personas.get(i).getName().equals(name)) {
+                    personas.set(i, personaUpdate);
+                }
+            }
+            operacionArchivo.saveArrayList(personas);
+            return true;
+        } catch (Exception e) {
+            System.out.println("error in cath " + e);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean updateSQLite(Persona personaUpdate, String name) {
+        return sqlite.update(personaUpdate, name);
+    }
+
 
     public ArrayList<Persona> getPersonas() {
         return personas;
@@ -105,4 +172,6 @@ public class PersonaImpl implements PersonaDAO{
     public void setPersonas(ArrayList<Persona> personas) {
         this.personas = personas;
     }
+
+
 }

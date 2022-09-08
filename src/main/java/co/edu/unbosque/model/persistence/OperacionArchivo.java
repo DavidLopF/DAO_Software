@@ -48,9 +48,13 @@ public class OperacionArchivo {
         }
     }
 
-
-
-
-
-
+    public void saveArrayList(ArrayList<Persona> personas) throws IOException {
+        try {
+            flujoObjeto = new ObjectOutputStream(new FileOutputStream(archivo));
+            flujoObjeto.writeObject(personas);
+            flujoObjeto.close();
+        } catch (IOException e) {
+            System.out.println("error in cath " + e);
+        }
+    }
 }

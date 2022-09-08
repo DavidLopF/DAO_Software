@@ -20,6 +20,8 @@ public class PanelFormPersona extends JPanel{
 
     private JLabel fondo;
 
+    private JButton volver;
+
 
     private JButton btnSave;
     
@@ -75,6 +77,12 @@ public class PanelFormPersona extends JPanel{
         btnSave.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btnSave.setActionCommand("GUARDAR_PERSONA");
         add(btnSave);
+
+        volver = new JButton("Volver");
+        volver.setBounds(10, 500, 120, 30);
+        volver.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        volver.setActionCommand("VOLVER");
+        add(volver);
 
         fondo = new JLabel();
         fondo.setBounds(0, 0, 700, 600);
@@ -175,5 +183,9 @@ public class PanelFormPersona extends JPanel{
 
     public void setBtnSave(JButton btnSave) {
         this.btnSave = btnSave;
+    }
+
+    public JButton getVolver() {
+        return volver;
     }
 }

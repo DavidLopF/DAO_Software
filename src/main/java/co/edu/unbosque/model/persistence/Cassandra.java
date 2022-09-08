@@ -80,4 +80,16 @@ public class Cassandra {
             return null;
         }
     }
+
+    public boolean delete(String name) {
+        try {
+            String query = "DELETE FROM DAO_SOFTWARE.persona WHERE name = '" + name + "';";
+            session.execute(query);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("error in cath " + e);
+            return false;
+        }
+    }
 }

@@ -50,6 +50,31 @@ public class Sqlite {
         }
     }
 
+    public boolean delete(String name){
+        try {
+            connection.createStatement().execute("DELETE FROM persona WHERE name = '"+name+"'");
+            return true;
+        } catch (SQLException e) {
+            System.err.println("error in cath " + e);
+            System.out.println("Error de conexion " + e);
+            return false;
+        }
+    }
+
+    public boolean update(Persona persona, String name)  {
+        //buscar la persona y actualizarla con los datos de persona
+        try {
+            connection.createStatement().execute("UPDATE persona SET name = '"+persona.getName()+"','"+persona.getSex()+"','"+persona.getPhoneNumber()+"',"+persona.getAge()+" WHERE name = '"+name+"'");            //u
+
+            return true;
+        } catch (SQLException e) {
+            System.err.println("error in cath " + e);
+            System.out.println("Error de conexion " + e);
+            return false;
+        }
+
+    }
+
 
 
 }

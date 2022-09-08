@@ -9,6 +9,10 @@ public class PanelOpciones extends JPanel {
     private JButton aceptar;
 
     private JButton verData;
+
+    private JButton verEliminar;
+
+    private JButton verActualizar;
     private JLabel fondo;
     public PanelOpciones(){
         setLayout(null);
@@ -47,6 +51,18 @@ public class PanelOpciones extends JPanel {
         verData.setActionCommand("VER_DATA");
         add(verData);
 
+        verEliminar = new JButton("Eliminar");
+        verEliminar.setBounds(160, 400, 400, 30);
+        verEliminar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        verEliminar.setActionCommand("VER_ELIMINAR");
+        add(verEliminar);
+
+        verActualizar = new JButton("Actualizar");
+        verActualizar.setBounds(160, 450, 400, 30);
+        verActualizar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        verActualizar.setActionCommand("VER_ACTUALIZAR");
+        add(verActualizar);
+
         fondo = new JLabel();
         fondo.setBounds(0, 0, 700, 600);
         fondo.setIcon(new ImageIcon(getClass().getResource("/fondo.png")));
@@ -66,5 +82,21 @@ public class PanelOpciones extends JPanel {
 
     public void setAceptar(JButton aceptar) {
         this.aceptar = aceptar;
+    }
+
+    public JButton getVerEliminar() {
+        return verEliminar;
+    }
+
+    public void setVerEliminar(JButton verEliminar) {
+        this.verEliminar = verEliminar;
+    }
+
+    public JButton getVerActualizar() {
+        return verActualizar;
+    }
+
+    public void setVerActualizar(JButton verActualizar) {
+        this.verActualizar = verActualizar;
     }
 }
